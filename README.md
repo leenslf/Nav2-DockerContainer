@@ -9,5 +9,13 @@ Note: Building may take a while.
 
 Run the container using:
 ```bash
-docker run -it my-ros2-image /bin/bash
+docker run -it \
+    --env="DISPLAY" \
+    --env="QT_X11_NO_MITSHM=1" \
+    --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+    --volume="$(pwd):/workspace" \
+    --name="ros2_container" \
+    --user=root \
+    my-ros2-image /bin/bash
+
 ```
