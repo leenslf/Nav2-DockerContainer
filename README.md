@@ -1,13 +1,17 @@
 # Nav2-SpaceTroopers
 
-Run the following command to build the container:
+- Install [Docker Engine](https://docs.docker.com/engine/install/ubuntu/).
+
+- Create a [docker usergroup](https://docs.docker.com/engine/install/linux-postinstall/) and add yourself to it to be able to use docker without sudo.
+
+- Run the following command to build the container:
 
 ```bash
 docker build -f full.dockerfile -t my-ros2-image .
 ```
 Note: Building may take a while.
 
-Run the container using:
+- Run the container using:
 ```bash
 docker run -it \
     --env="DISPLAY" \
