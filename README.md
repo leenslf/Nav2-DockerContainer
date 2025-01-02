@@ -13,7 +13,7 @@
   ```bash
     docker build -f full.dockerfile -t my-ros2-image .
     ```
-Note: Building may take a while.
+  Note: Building may take a while.
 
 - Run the container using:
     ```bash
