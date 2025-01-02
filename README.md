@@ -42,4 +42,4 @@
 
 ## Running Gazebo
 - Follow the README.md at /arUco_tags
-- launch Gazebo and add the markers. 
+- Launch Gazebo and add the markers. 
