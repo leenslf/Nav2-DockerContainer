@@ -1,8 +1,12 @@
 # Generating Gazebo Models from arUco Tags
-
 This guide provides instructions for generating Gazebo models from arUco tag images.
 
-## 1. Check the GAZEBO_MODEL_PATH
+This script is based on the code from [mikaelarguedas/gazebo_models](https://github.com/mikaelarguedas/gazebo_models). To use it for generating Gazebo models with arUco tags, follow the steps below:
+## 1. clone the repo in arUco_tags
+  ```bash
+  git clone https://github.com/mikaelarguedas/gazebo_models
+  ```
+## 2. Check the GAZEBO_MODEL_PATH
 
 Run the following command to confirm the `GAZEBO_MODEL_PATH` environment variable:
 
@@ -10,10 +14,10 @@ Run the following command to confirm the `GAZEBO_MODEL_PATH` environment variabl
 echo $GAZEBO_MODEL_PATH
 ```
 
-## 2. Prepare arUco Tag Images
+## 3. Prepare arUco Tag Images
 Place the images of arUco tags into the marker folder.
 
-## 3. Generate the Models
+## 4. Generate the Models
 Execute the following command to create the models:
 
 ```bash
