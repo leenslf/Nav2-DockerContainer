@@ -17,7 +17,7 @@
 
 - Run the container using:
   ```bash
-    export Nav2-SpaceTroopers=/<path>/Nav2-SpaceTroopers
+    export Nav2_SpaceTroopers=/<path>/Nav2-SpaceTroopers
   ```
     ```bash
     echo docker run -it \
