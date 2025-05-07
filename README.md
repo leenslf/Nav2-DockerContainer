@@ -45,15 +45,3 @@
   ```bash
   ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
   ```
-
-* To launch Navigation2 with a saved map:
-
-  ```bash
-  ros2 launch my_particle_filter navigation.launch.py
-  ```
-
-* To launch your custom particle filter:
-
-  ```bash
-  ros2 launch my_particle_filter particle_filter.launch.py
-  ```
