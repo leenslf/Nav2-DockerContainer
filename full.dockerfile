@@ -16,10 +16,18 @@ RUN apt-get update -y && \
         git \
         cmake \
         python3-pip \
-        ros-humble-gazebo-* \
         libx11-xcb1 \
         libxcb-util1 \
-        libxcb-xinerama0 && \
+        libxcb-xinerama0 \
+        ros-humble-gazebo-* \
+        ros-humble-turtlebot3-msgs \
+        ros-humble-turtlebot3 \
+        ros-humble-turtlebot3-simulations \
+        ros-humble-turtlebot3-gazebo \
+        ros-humble-cartographer \
+        ros-humble-cartographer-ros \
+        ros-humble-navigation2 \
+        ros-humble-nav2-bringup && \
     rm -rf /var/lib/apt/lists/*
 
 # Install Python packages
@@ -45,10 +53,4 @@ WORKDIR /home/${USERNAME}
 # Source ROS and Gazebo setup files in the user's bashrc
 RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 RUN echo "source /usr/share/gazebo/setup.sh" >> ~/.bashrc
-
-# Install Nav2 dependencies
-RUN sudo apt-get update -y && \
-    sudo apt-get install -qq -y --no-install-recommends \
-        ros-humble-navigation2 \
-        ros-humble-nav2-bringup && \
-    sudo rm -rf /var/lib/apt/lists/*
+RUN echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc

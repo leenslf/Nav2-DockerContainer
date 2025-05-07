@@ -1,45 +1,59 @@
-# Nav2-SpaceTroopers
 ## Setting up
-- Install [Docker Engine](https://docs.docker.com/engine/install/ubuntu/).
 
-- Create a [docker usergroup](https://docs.docker.com/engine/install/linux-postinstall/) and add yourself to it to be able to use docker without sudo.
+* Install [Docker Engine](https://docs.docker.com/engine/install/ubuntu/).
 
-- Run the following to enable GUI applications running as root within the container to display on the host's graphical interface:
+* Create a [docker usergroup](https://docs.docker.com/engine/install/linux-postinstall/) and add yourself to it to be able to use Docker without `sudo`.
+
+* Run the following to enable GUI applications running as root within the container to display on the host's graphical interface:
+
   ```bash
-    xhost +local:root
+  xhost +local:docker
   ```
 
-- Run the following command to build the container:
-  ```bash
-    docker build -f full.dockerfile -t my-ros2-image .
-    ```
-  Note: Building may take a while.
+* Build the Docker image (may take a while):
 
-- Run the container using:
   ```bash
-    export Nav2_SpaceTroopers=/<path>/Nav2-SpaceTroopers
+  docker build -f full.dockerfile -t my-ros2-image .
   ```
-    ```bash
-    echo docker run -it \
-      --env="DISPLAY=$DISPLAY" \
-      --env="QT_X11_NO_MITSHM=1" \
-      --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
-      --volume="${Nav2-SpaceTroopers}:/workspace:rw" \
-      --name="ros2_container" \
-      --user=ros2user \
-      my-ros2-image /bin/bash
 
-    ```
-- Run the following to execute an already running container:
-  ```bash
-    docker run -it --name my_ros2_container my-ros2-image
-    ```
-- If a container with the name ros2_container already exists and you want to remove it, run:
-  ```bash
-    docker rm ros2_container
-    ```
+* Start the container and set up ROS + Gazebo:
 
+  ```bash
+  ./run_container.sh
+  ```
+
+  > This will source ROS and Gazebo environments and start the container with GUI support.
+
+* To attach to an existing (stopped) container:
+
+  ```bash
+  ./attach_container.sh
+  ```
+
+* If a container with the name `ros2_container` already exists and you want to remove it:
+
+  ```bash
+  docker rm ros2_container
+  ```
 
 ## Running Gazebo
-- Follow the README.md at /arUco_tags
-- Launch Gazebo and add the markers. 
+
+* Follow the README at `/arUco_tags` if needed for tag simulation.
+
+* To launch Gazebo with TurtleBot3:
+
+  ```bash
+  ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
+  ```
+
+* To launch Navigation2 with a saved map:
+
+  ```bash
+  ros2 launch my_particle_filter navigation.launch.py
+  ```
+
+* To launch your custom particle filter:
+
+  ```bash
+  ros2 launch my_particle_filter particle_filter.launch.py
+  ```
